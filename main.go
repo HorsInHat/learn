@@ -1,18 +1,24 @@
 package main
 
-import "hors/types"
+import (
+	"github.com/HorsInHat/learn/scope"
+)
 
 func main() {
-	//sayHello("Mike")
-	//sayHello("")
-	//fmt.Println("------------- 1 ---------------")
-	//types.SayHello("Stive","")
-	//fmt.Println("-------------- 2 --------------")
-	//types.SayHello("", "")
-	//fmt.Println("-------------- 3 --------------")
-	//types.SayHello("", "Obukhov")
-	//fmt.Println("--------------- 4 -------------")
-	//types.SayHello("Nik", "Obuhov")
+	//scp := scope.NewScopeStruct()
+	//
+	//fmt.Println("------ scp.SET ----------")
+	//scp.Set()
+	//fmt.Println("------ scp.VIEW ----------")
+	//scp.View()
+	//
+	//fmt.Println("------ fmt SCP ----------")
+	//fmt.Println(scp.Config)
+	//fmt.Println("------ fmt scope.Public ----------")
+	//fmt.Println(scope.Public)
 
-	types.ShopMap()
+	// Создаем структуру
+	inh := scope.NewInherit()
+	// Вызываем функцию структуры
+	inh.ViewScope()
 }
