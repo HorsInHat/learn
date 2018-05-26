@@ -1,0 +1,3 @@
+GET     /                                       App.Index
+GET     /test                                   App.Test
+GET     /public/*filepath                       Static.Serve("public")
