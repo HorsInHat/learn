@@ -1,0 +1,55 @@
+{{/* SET variables */}}
+{{set . "title" "Login"}}
+{{/* Include header-template */}}
+{{template "header.html" .}}
+
+<div class="container-fluid login-page">
+    <div class="container-fluid login-form">
+        <form action="/login" method="POST">
+            <div class="row logo-block">
+                <div class="logo"></div>
+                <h3>BATMAN inc.</h3>
+            </div>
+            {{if .errors}}
+            <div class="alert alert-danger" role="alert">
+
+                <ul>
+                {{ range $index, $value := .errors}}
+                    <li>{{$value}}</li>
+                {{end}}
+                </ul>
+            </div>
+            {{end}}
+            <div class="row">
+                <div class="input-group">
+                {{with $field := field "guest.Username" .}}
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control {{$field.ErrorClass}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="Username">
+                {{end}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                {{with $field := field "guest.Password" .}}
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="{{$field.Name}}" placeholder="Password">
+                {{end}}
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{/* Include footer-template */}}
+{{template "footer.html" .}}

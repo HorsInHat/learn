@@ -1,0 +1,4 @@
+GET     /                                       App.Index
+*       /login                                  User.Login
+GET     /logout                                 User.Logout
+GET     /public/*filepath                       Static.Serve("public")
