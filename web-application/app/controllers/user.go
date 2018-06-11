@@ -5,11 +5,12 @@ import (
 	"github.com/HorsInHat/learn/web-application/app/models"
 )
 
-type User struct {
+// UserCtrl
+type UserController struct {
 	Common
 }
 
-func (ctrl User) Login(guest models.GuestForm) revel.Result {
+func (ctrl UserController) Login(guest models.GuestForm) revel.Result {
 	if ctrl.Request.Method == "GET"{
 		return ctrl.Render()
 	} else {
@@ -23,7 +24,7 @@ func (ctrl User) Login(guest models.GuestForm) revel.Result {
 			// Store the validation errors in the flash context and redirect.
 			ctrl.Validation.Keep()
 			ctrl.FlashParams()
-			return ctrl.Redirect(User.Login)
+			return ctrl.Redirect(UserController.Login)
 		}
 
 		if guest.Username == VerifyUser.Username{
@@ -42,15 +43,15 @@ func (ctrl User) Login(guest models.GuestForm) revel.Result {
 			// Store the validation errors in the flash context and redirect.
 			ctrl.Validation.Keep()
 			ctrl.FlashParams()
-			return ctrl.Redirect(User.Login)
+			return ctrl.Redirect(UserController.Login)
 		}
 
 		return ctrl.Render(guest)
 	}
 }
 
-func (ctrl User) Logout() revel.Result{
+func (ctrl UserController) Logout() revel.Result{
 	delete(ctrl.Session, "isLogin")
 	delete(ctrl.Session, "username")
-	return ctrl.Redirect(User.Login)
+	return ctrl.Redirect(UserController.Login)
 }

@@ -1,4 +1,4 @@
 GET     /                                       App.Index
-*       /login                                  User.Login
-GET     /logout                                 User.Logout
+*       /login                                  UserController.Login
+GET     /logout                                 UserController.Logout
 GET     /public/*filepath                       Static.Serve("public")

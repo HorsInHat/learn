@@ -2,6 +2,8 @@ package app
 
 import (
 	"github.com/revel/revel"
+	"github.com/HorsInHat/learn/web-application/app/services"
+	"github.com/HorsInHat/learn/web-application/app/models"
 )
 
 var (
@@ -10,6 +12,8 @@ var (
 
 	// BuildTime revel app build-time (ldflags)
 	BuildTime string
+
+	ORM *services.ORM
 )
 
 func init() {
@@ -33,7 +37,7 @@ func init() {
 	// revel.DevMode and revel.RunMode only work inside of OnAppStart. See Example Startup Script
 	// ( order dependent )
 	// revel.OnAppStart(ExampleStartupScript)
-	// revel.OnAppStart(InitDB)
+	revel.OnAppStart(SetupSystem)
 	// revel.OnAppStart(FillCache)
 }
 
@@ -56,3 +60,14 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 //		// Dev mode
 //	}
 //}
+
+func SetupSystem(){
+	var err error
+
+	ORM, err = services.NewORMService()
+	if err != nil{
+		revel.ERROR.Fatal("Can't connect Database")
+	}
+
+	ORM.DB.AutoMigrate(models.User{})
+}
