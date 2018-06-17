@@ -14,16 +14,6 @@ func (ctrl App) Index() revel.Result {
 		username := ctrl.Session["username"]
 		ctrl.ViewArgs["username"] = username
 
-		form := models.UserForm{
-			Login: "admin",
-			Password: "admin",
-			Name: "Администратор",
-			SecondName: "Системы",
-		}
-
-		user := new(models.User)
-		user.Create(&form)
-
 		ctrl.ViewArgs["debug"] = "0"
 		return ctrl.Render()
 	}

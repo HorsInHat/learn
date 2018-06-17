@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-
+/* --------------- Login Page -------------- */
 .login-page{
     display: flex;
     justify-content: center;
@@ -40,4 +40,45 @@
 
 .login-form .row button{
     margin: 0 auto;
+}
+
+
+/* --------------- Main template -------------- */
+/* Navbar */
+nav.navbar .nav-link{
+    color: white;
+}
+nav.navbar .nav-link:hover{
+    text-decoration: underline;
+}
+/* Sidebar */
+nav.sidebar{
+    padding-top: 65px;
+    background-color: #b6b1b166;
+    height: 100vh;
+    border-right: 2px solid #343a40;
+}
+nav.sidebar .nav-link{
+    color: #211818;
+
+}
+nav.sidebar .nav-link .icon i{
+    margin-right: 5px;
+}
+nav.sidebar .nav-link .icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+}
+
+nav.sidebar .nav-link.active{
+    color: #007bff;
+}
+nav.sidebar .nav-link:hover span.title{
+    text-decoration: underline ;
+}
+
+/* Main container */
+main[role="main"]{
+    padding-top: 48px;
 }
